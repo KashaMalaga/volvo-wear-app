@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Volvo Wear Auth Success</title>
+    <style>
+        body { font-family: sans-serif; text-align: center; padding: 40px; }
+        .code { font-size: 24px; font-weight: bold; background-color: #eee; padding: 20px; margin: 20px; display: inline-block; word-break: break-all; }
+        .error { color: red; }
+    </style>
+</head>
+<body>
+    <h1>Authentication Successful!</h1>
+    <p>Please enter the following code into your watch app:</p>
+    
+    <div id="authCode" class="code">Loading...</div>
+    <div id="errorMessage" class="error" style="display: none;">Error: Could not find authorization code.</div>
+
+    <script>
+        // JavaScript to extract the 'code' parameter from the URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const code = urlParams.get('code');
+
+        if (code) {
+            document.getElementById('authCode').textContent = code;
+        } else {
+            document.getElementById('authCode').style.display = 'none';
+            document.getElementById('errorMessage').style.display = 'block';
+        }
+    </script>
+</body>
+</html>
